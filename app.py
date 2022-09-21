@@ -45,5 +45,9 @@ def actividades():
 def personal():
 	return render_template('personal.html')
 
+@app.route('/notas')
+def notas():
+	return render_template('notas.html')
+
 if __name__=='__main__':
 	app.run(debug=True)
