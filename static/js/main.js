@@ -1,6 +1,6 @@
-function verdatos(){
+function verusuarios(){
     var listapost;
-    var url="https://jsonplaceholder.typicode.com/posts"
+    var url="http://localhost:5000/listadousuarios"
     
     fetch(url)
     .then(response=>response.json())
@@ -12,9 +12,9 @@ function verdatos(){
     {
         info=info+"<tr'>"
         info=info+"<td>"+listapost[i]['id'] + "</td>"
-        info=info+"<td>"+listapost[i]['userId'] + "</td>"
-        info=info+"<td>"+listapost[i]['title'] + "</td>"
-        info=info+"<td>"+listapost[i]['body'] + "</td>"
+        info=info+"<td>"+listapost[i]['nombre'] + "</td>"
+        info=info+"<td>"+listapost[i]['apellido'] + "</td>"
+        info=info+"<td>"+listapost[i]['email'] + "</td>"
         info=info+"<td> <span class='badge bg-success'>Editar</span> <span class='badge bg-danger'>Eliminar</span></td>"
         info=info+"</tr>"
     
@@ -27,80 +27,71 @@ function verdatos(){
     
     }
     
-   
-function verproductos(){
-
-var listapost;
-var url="https://jsonplaceholder.typicode.com/posts"
-
-fetch(url)
-.then(response=>response.json())
-.then((data)=>{
-listapost=data;    
-var info=""    
-
-var info=""
-info=info+"<div class='row d-flex justify-content-center '>"
-
-
-
-for(var i=0;i<10;i++)
-{
-info=info+"<div class='card p-0 m-1' style='width: 18rem;'>"
-info=info +"<img src='https://tienda.claro.com.co/wcsstore/Claro/images/catalog/equipos/646x1000/70040936.jpg' class='card-img-top' alt='...'>"    
-info=info+"<div class='card-body'>"
-info=info+"<h5 class='card-title'></h5>"
-info=info+"<p class='card-text'></p>"
-info=info+"<ul class='list-group list-group-flush'>"
-info=info+"<li class='list-group-item'></li>"
-info=info+"<li class='list-group-item'></li>"
-info=info+"</ul>"
-info=info+"<a href='#' class='btn btn-primary'>Ver Perfil</a>"
-info=info+"</div>"
-info=info+"</div>"
-}
-
-info=info+"</div>"
-info=info+"</div>"
-
-document.getElementById("productos").innerHTML=info
+    function vermaterias(){
+        var listapost;
+        var url="http://localhost:5000/listadomaterias"
+        
+        fetch(url)
+        .then(response=>response.json())
+        .then((data)=>{
+        listapost=data;    
+        var info=""
+        
+        for(var i=0;i<listapost.length;i++)
+        {
+            info=info+"<tr'>"
+            info=info+"<td>"+listapost[i]['id_materia'] + "</td>"
+            info=info+"<td>"+listapost[i]['nombre_materia'] + "</td>"            
+            info=info+"<td> <span class='badge bg-success'>Editar</span> <span class='badge bg-danger'>Eliminar</span></td>"
+            info=info+"</tr>"
+        
+        }
+        
+     
+        document.getElementById("listado").innerHTML=info
+        }
+        )
+        
+        }
     
-}
-    );
-}    
-
-class profesor {
-    constructor(documento, nombre, apellido, rol) {
-      this.documento = documento;
-      this.nombre = nombre;
-      this.apellido = apellido;
-      this.rol = rol;
-    }
-}
-
-let personas = [];
-
-const listado = document.getElementById('listado');
-
-cargar_datos();
-
-function cargar_datos(){
-    let item = '';
-    listado.innerHTML = '';
-    for (let index = 0; index < personas.length; index++) {
-        item += `
-            <tr>
-                <th scope="row">${personas[index].documento}</th>
-                <td>${personas[index].nombre}</td>
-                <td>${personas[index].apellido}</td>
-                <td>${personas[index].rol}</td>
-                <td><button type="button" class="btn btn-primary" onclick="cargar(${personas[index].documento})"><i class="bi bi-pen"></i></button></td>
-                <td><button type="button" class="btn btn-danger" onclick="eliminar(${personas[index].documento})"><i class="bi bi-trash"></i></td>
-            </tr>
-        `;
-    }
-    listado.innerHTML = item;
-}
+        function verpersonal(){
+            var listapost;
+            identificador =document.getElementById("login_username").innerHTML;
+    
+            console.log(identificador)
+            var url="/listadopersonal";
+            var data = {
+                        "usuario":"leonconde15"                        
+                };
+    
+            fetch(url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {"Content-type":"application/json;charset=UTF-8"}
+                })
+            .then(response=>response.json())
+            .then((data)=>{
+            listapost=data;    
+            var info=""
+            
+            for(var i=0;i<listapost.length;i++)
+            {
+                info=info+"<tr'>"
+                info=info+"<td>"+listapost[i]['id'] + "</td>"
+                info=info+"<td>"+listapost[i]['nombre'] + "</td>" 
+                info=info+"<td>"+listapost[i]['apellido'] + "</td>"
+                info=info+"<td>"+listapost[i]['usuario'] + "</td>"           
+                info=info+"<td> <span class='badge bg-success'>Editar</span> <span class='badge bg-danger'>Eliminar</span></td>"
+                info=info+"</tr>"
+            
+            }
+            
+         
+            document.getElementById("listado").innerHTML=info
+            }
+            )
+            
+            }
 
 function accion(){
     let boton = document.getElementById('boton-accion');

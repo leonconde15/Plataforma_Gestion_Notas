@@ -20,9 +20,9 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
                                         <select class="form-select" aria-label="Default select example" id="rol">
                                             <option value="seleccione" selected>Seleccione</option>
-                                            <option value="Docente">Desarrollo de Sotfware</option>
-                                            <option value="Estudiante">Ingles</option>
-                                            <option value="Estudiante">Coaching</option>
+                                            {% for user in datosmateria %}
+                                            <option value="{{user['id_materia']}}">{{user['nombre_materia']}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
 

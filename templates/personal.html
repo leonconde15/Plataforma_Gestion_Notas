@@ -16,32 +16,47 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Informacion Personal</h1>
                                     </div>
-                                    <form class="user" action="" method="POST">    
-    
-        <div class="row">
-            <div class="column">
-            <p>NOMBRES Y APELLIDOS: 
-            </p>
-            <input type="text" name="nombre" maxlength="50" value="Carlos Luis Forgiony" disabled>
-            <p>CORREO: 
-            </p>
-            <input type="text" name="usuario" maxlength="10" value="cforgiony@unal.edu.co" disabled>
-            <p>CODIGO: 
-            </p>
-            <input type="text" name="usuario" maxlength="10" value="E0001" disabled>
-            </div>
-            <div class="column">
-            <p>FECHA DE NACIMIENTO: 
-            </p>
-            <input type="text" name="usuario" maxlength="10" value="01/01/1995" disabled>
-            <p>IDENTIFICACION: 
-            </p>
-            <input type="text" name="usuario" maxlength="10" value="CC 1091123456" disabled>
-            <p>CIUDAD: 
-            </p>
-            <input type="text" name="usuario" maxlength="10" value="BOGOTA" disabled>
-            </div>
-        </div>
+                                    <form class="user" action="listadopersonal" method="POST">    
+                                        <div class="d-flex gap-2">
+                                            <button id="boton-accion" class="btn btn-primary" type="submit">VER MI INFORMACION PERSONAL</button>
+                                            
+                                        </div>
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                        
+                                                <div class="col-xl-10 col-lg-12 col-md-9">
+                                        
+                                                    <div class="card o-hidden border-1 my-1">
+                                                        <div class="card-body p-0">
+                                                            <div class="p-3">
+                                                               
+                                                                <table id="usuarios2" class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Id</th>
+                                                                            <th>Nombres</th>
+                                                                            <th>Apellidos</th>
+                                                                            <th>Email</th>
+                                                                            <th>Usuario</th>
+                                                                            <th>Fecha de Nacimiento</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="listado"></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <script>
+                                        
+                                            window.onload = function () {
+                                                verpersonal();
+                                            }
+                                        </script>
+                                        
     </form>
     </div>
 {% endblock %}

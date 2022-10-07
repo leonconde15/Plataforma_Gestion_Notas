@@ -15,43 +15,33 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Gestion de Matriculas</h1>
                             </div>
-                            <form class="user" action="/usuarios" method="POST">
+                            <form class="user" action="/agregarmatricula" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                        <select class="form-select" aria-label="Default select example" id="rol">
-                                            <option value="seleccione" selected>Seleccione</option>
-                                            <option value="Docente">Desarrollo de Sotfware</option>
-                                            <option value="Estudiante">Ingles</option>
-                                            <option value="Estudiante">Coaching</option>
+                                        <select class="form-select" aria-label="Default select example" id="materia" name="materia">
+                                            <option value="seleccione" selected>Seleccione la Materia</option>
+                                            {% for user in datosmateria %}
+                                            <option value="{{user['id_materia']}}">{{user['nombre_materia']}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                        <select class="form-select mb-3" aria-label="Default select example" id="rol">
-                                            <option value="seleccione" selected>Seleccione</option>
-                                            <option value="Docente">Profesor 1</option>
-                                            <option value="Estudiante">Profesor 2</option>
-                                            <option value="Estudiante">Profesor 3</option>
-                                            <option value="Estudiante">Profesor 4</option>
-                                            <option value="Estudiante">Profesor 5</option>
+                                        <select class="form-select mb-3" aria-label="Default select example" id="docente" name="docente">
+                                            <option value="seleccione" selected>Seleccione el Profesor</option>
+                                            {% for user in datosdocente %}
+                                            <option value="{{user['id_usuario']}}">{{user['nombre']}} {{user['apellido']}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                    
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                        <select class="form-select mb-3" aria-label="Default select example" id="rol">
-                                            <option value="seleccione" selected>Seleccione</option>
-                                            <option value="Docente">Estudiante 1</option>
-                                            <option value="Estudiante">Estudiante 2</option>
-                                            <option value="Estudiante">Estudiante 3</option>
-                                            <option value="Estudiante">Estudiante 4</option>
-                                            <option value="Docente">Estudiante 5</option>
-                                            <option value="Estudiante">Estudiante 6</option>
-                                            <option value="Estudiante">Estudiante 7</option>
-                                            <option value="Estudiante">Estudiante 8</option>
-                                            <option value="Estudiante">Estudiante 9</option>
-                                            <option value="Estudiante">Estudiante 10</option>
-                                                                                        
+                                        <select class="form-select mb-3" aria-label="Default select example" id="estudiante" name="estudiante">
+                                            <option value="seleccione" selected>Seleccione el Estudiante</option>
+                                            {% for user in datosestudiante %}
+                                            <option value="{{user['id_usuario']}}">{{user['nombre']}} {{user['apellido']}}</option>
+                                            {% endfor %}                                                                                        
                                         </select>
                                     </div>
                                     
@@ -59,8 +49,7 @@
                                 
 
                                 <div class="d-flex gap-2">
-                                    <button id="boton-accion" class="btn btn-primary" type="button"
-                                        onclick="verdatos();">Matricular</button>
+                                    <button id="boton-accion" class="btn btn-primary" type="submit" >Matricular</button>
                                     <button class="btn btn-danger" type="button"
                                         onclick="vercancelar()">Cancelar</button>
                                 </div>

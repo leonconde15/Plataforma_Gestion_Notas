@@ -14,49 +14,51 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Gestion de Usuarios</h1>
                             </div>
-                            <form class="user" action="/usuarios" method="POST">
+                            <form class="user" action="/agregarusuario" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user mb-3" id="codigo"
-                                            name="codigo" placeholder="Codigo">
-                                    </div>
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user mb-3" id="nombre"
                                             name="nombre" placeholder="Nombres">
                                     </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user mb-3" id="apellido"
+                                            name="apellido" placeholder="Apellidos">
+                                    </div>
                                     
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user mb-3" id="apellido"
-                                            name="apellido" placeholder="Apellidos">
+                                        <input type="email" class="form-control form-control-user mb-3" id="email"
+                                            name="email" placeholder="Email">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="email" class="form-control form-control-user mb-3" id="usuario"
-                                            name="usuario" placeholder="Email">
+                                        <input type="text" class="form-control form-control-user mb-3" id="usuario"
+                                            name="usuario" placeholder="usuario">
                                     </div>
                                     
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select class="form-select" aria-label="Default select example" id="rol">
+                                        <select class="form-select" aria-label="Default select example" id="rol" name="rol">
                                             <option value="seleccione" selected>Seleccione</option>
-                                            <option value="Docente">Docente</option>
-                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="1">SuperAdministrador</option>
+                                            <option value="2">Docente</option>
+                                            <option value="3">Estudiante</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user mb-3" id="pass"
-                                            name="pass" placeholder="Contraseña">
+                                        <input type="password" class="form-control form-control-user mb-3" id="contrasena"
+                                            name="contrasena" placeholder="Contraseña">
                                     </div>
                                     
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repetir Contraseña">
+                                            id="contrasena2" name="contrasena2" placeholder="Repetir Contraseña">
                                     </div>
                                     <div class="col-sm-6">
+                                        <h6>Fecha de Nacimiento</h6>
                                         <input type="date" class="form-control form-control-user mb-3" id="fnacimiento"
                                             name="fnacimiento" placeholder="Fecha Nacimiento">
                                     </div>
@@ -65,13 +67,22 @@
 
 
                                 <div class="d-flex gap-2">
-                                    <button id="boton-accion" class="btn btn-primary" type="button"
-                                        onclick="verdatos();">Agregar</button>
+                                    <button id="boton-accion" class="btn btn-primary" type="submit" >Agregar</button>
                                     <button class="btn btn-danger" type="button"
                                         onclick="vercancelar()">Cancelar</button>
                                 </div>
                             </form>
-
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <h4 class="alert-heading">Alerta!</h4>
+                                <p class="mb-0"> {{ message }} </p>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
                         </div>
                     </div>
                 </div>
@@ -100,9 +111,9 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>User Id</th>
-                                    <th>Titulo</th>
-                                    <th>Detalle</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Email</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -118,7 +129,7 @@
 <script>
 
     window.onload = function () {
-        verdatos();
+        verusuarios();
     }
 </script>
 {% endblock %}

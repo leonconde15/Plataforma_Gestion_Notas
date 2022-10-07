@@ -1,5 +1,4 @@
 {% extends 'base1.html' %}
-
 {% block content %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
@@ -30,18 +29,21 @@
         <hr>
         <div class="usuario">
             <img src="/static/img/admin.jpg" alt="">
-            Nombre de usuario
+            <p>{{ session['nombre_rol']}} </p>                   
+            <p>{{ session['nombre'] }}</p>
+            <p>{{ session['usuario'] }}</p>
+            
+            
+                        
         </div>
         <hr>
 
         <div class="d-grid gap-2">
-            <a href="{{url_for('personal')}}" class="boton seleccionado"><i class="bi bi-universal-access-circle"></i>Administrador</a>
-            <a onclick="" href="{{url_for('usuarios')}}" class="boton"><i class="bi bi-person"></i>Gestion
+            <a href="{{url_for('personal')}}" class="boton seleccionado" id="op" style="visibility:hidden"><i class="bi bi-universal-access-circle"></i>Administrador</a>
+            <a onclick="" href="{{url_for('usuarios')}}" class="boton" id="op2" style="visibility:hidden"><i class="bi bi-person"></i>Gestion
                 Usuarios</a>
             <a onclick="" href="{{url_for('materias')}}" class="boton"><i class="bi bi-book"></i>Gestion
                     de Materias</a>
-            <a onclick="" href="{{url_for('cursos')}}" class="boton"><i class="bi bi-briefcase-fill"></i>Gestion
-                        de Cursos</a>     
             <a onclick="" href="{{url_for('matriculas')}}" class="boton"><i class="bi bi-pencil-square"></i>Gestion
                             de Matriculas</a>     
         </div>
@@ -52,18 +54,12 @@
            <a onclick="" href="{{url_for('calificaciones')}}" class="boton"><i class="bi bi-grid-3x3"></i>Gestion
                     de Calificaciones</a>    
 
-            <!-- <a href="profesores.html" class="boton"><i class="bi bi-person-workspace"></i>Profesores</a>
-            <a href="estudiantes.html" class="boton"><i class="bi bi-person-check"></i>Estudiantes</a>
-            <a href="materias.html" class="boton"><i class="bi bi-list-task"></i>Materias</a>
-            <a href="cursos.html" class="boton"><i class="bi bi-list-task"></i>Curso</a> -->
+            
         </div>
         <div class="d-grid gap-2">
             <a href="{{url_for('personal')}}" class="boton seleccionado"><i class="bi bi-person-circle"></i>Estudiante</a>
             <a href="{{url_for('notas')}}" class="boton"><i class="bi-search"></i>Consulta</a>
-            <!-- <a href="profesores.html" class="boton"><i class="bi bi-person-workspace"></i>Profesores</a>
-            <a href="estudiantes.html" class="boton"><i class="bi bi-person-check"></i>Estudiantes</a>
-            <a href="materias.html" class="boton"><i class="bi bi-list-task"></i>Materias</a>
-            <a href="cursos.html" class="boton"><i class="bi bi-list-task"></i>Curso</a> -->
+            
         </div>
 
         <div class="d-grid gap-2">
@@ -74,7 +70,20 @@
 
     </div>
 </div>
+<script>
+    
+    
+if ('Docente'=='Docente') {
+       document.getElementById('op').style.visibility = 'visible';
+       document.getElementById('op2').style.visibility = 'visible';
+       
+       //document.getElementById('op').style.visibility = 'hidden';
+       //print(session['id_rol'])
 
+}
+    
+
+</script>
 {% block content1 %}
 
 {% endblock %}
