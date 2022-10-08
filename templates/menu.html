@@ -29,7 +29,7 @@
         <hr>
         <div class="usuario">
             <img src="/static/img/admin.jpg" alt="">
-            <p>{{ session['nombre_rol']}} </p>                   
+            <p id="nom_rol" value="{{ session['nombre_rol'] }}">{{ session['nombre_rol'] }}</p>
             <p>{{ session['nombre'] }}</p>
             <p>{{ session['usuario'] }}</p>
             
@@ -39,26 +39,26 @@
         <hr>
 
         <div class="d-grid gap-2">
-            <a href="{{url_for('personal')}}" class="boton seleccionado" id="op" style="visibility:hidden"><i class="bi bi-universal-access-circle"></i>Administrador</a>
+            <a href="{{url_for('personal')}}" class="boton seleccionado" id="op1" style="visibility:hidden"><i class="bi bi-universal-access-circle"></i>Administrador</a>
             <a onclick="" href="{{url_for('usuarios')}}" class="boton" id="op2" style="visibility:hidden"><i class="bi bi-person"></i>Gestion
                 Usuarios</a>
-            <a onclick="" href="{{url_for('materias')}}" class="boton"><i class="bi bi-book"></i>Gestion
+            <a onclick="" href="{{url_for('materias')}}" class="boton" id="op3" style="visibility:hidden"><i class="bi bi-book"></i>Gestion
                     de Materias</a>
-            <a onclick="" href="{{url_for('matriculas')}}" class="boton"><i class="bi bi-pencil-square"></i>Gestion
+            <a onclick="" href="{{url_for('matriculas')}}" class="boton" id="op4" style="visibility:hidden"><i class="bi bi-pencil-square"></i>Gestion
                             de Matriculas</a>     
         </div>
         <div class="d-grid gap-2">
-            <a href="{{url_for('personal')}}" class="boton seleccionado"><i class="bi bi-person-bounding-box"></i>Profesor</a>
-            <a onclick="" href="{{url_for('actividades')}}" class="boton"><i class="bi bi-folder"></i>Gestion
+            <a href="{{url_for('personal')}}" class="boton seleccionado" id="op5" style="visibility:hidden"><i class="bi bi-person-bounding-box"></i>Profesor</a>
+            <a onclick="" href="{{url_for('actividades')}}" class="boton" id="op6" style="visibility:hidden"><i class="bi bi-folder"></i>Gestion
                 de Actividades</a>
-           <a onclick="" href="{{url_for('calificaciones')}}" class="boton"><i class="bi bi-grid-3x3"></i>Gestion
+           <a onclick="" href="{{url_for('calificaciones')}}" class="boton" id="op7" style="visibility:hidden"><i class="bi bi-grid-3x3"></i>Gestion
                     de Calificaciones</a>    
 
             
         </div>
         <div class="d-grid gap-2">
-            <a href="{{url_for('personal')}}" class="boton seleccionado"><i class="bi bi-person-circle"></i>Estudiante</a>
-            <a href="{{url_for('notas')}}" class="boton"><i class="bi-search"></i>Consulta</a>
+            <a href="{{url_for('personal')}}" class="boton seleccionado" id="op8" style="visibility:hidden"><i class="bi bi-person-circle"></i>Estudiante</a>
+            <a href="{{url_for('notas')}}" class="boton" id="op9" style="visibility:hidden"><i class="bi-search"></i>Consulta</a>
             
         </div>
 
@@ -72,16 +72,42 @@
 </div>
 <script>
     
-    
-if ('Docente'=='Docente') {
-       document.getElementById('op').style.visibility = 'visible';
+rol = document.getElementById("nom_rol").innerHTML;
+if (rol=='SuperAdministrador') {
+       document.getElementById('op1').style.visibility = 'visible';
        document.getElementById('op2').style.visibility = 'visible';
-       
-       //document.getElementById('op').style.visibility = 'hidden';
-       //print(session['id_rol'])
-
+       document.getElementById('op3').style.visibility = 'visible';
+       document.getElementById('op4').style.visibility = 'visible';
+       document.getElementById('op5').style.visibility = 'visible';
+       document.getElementById('op6').style.visibility = 'visible';
+       document.getElementById('op7').style.visibility = 'visible';
+       document.getElementById('op8').style.visibility = 'visible';
+       document.getElementById('op9').style.visibility = 'visible';      
 }
+
+if (rol=='Docente') {
+       document.getElementById('op1').style.visibility = 'hidden';
+       document.getElementById('op2').style.visibility = 'hidden';
+       document.getElementById('op3').style.visibility = 'hidden';
+       document.getElementById('op4').style.visibility = 'hidden';
+       document.getElementById('op5').style.visibility = 'visible';
+       document.getElementById('op6').style.visibility = 'visible';
+       document.getElementById('op7').style.visibility = 'visible';
+       document.getElementById('op8').style.visibility = 'hidden';
+       document.getElementById('op9').style.visibility = 'hidden';      
+}
+if (rol=='Estudiante') {
+       document.getElementById('op1').style.visibility = 'hidden';
+       document.getElementById('op2').style.visibility = 'hidden';
+       document.getElementById('op3').style.visibility = 'hidden';
+       document.getElementById('op4').style.visibility = 'hidden';
+       document.getElementById('op5').style.visibility = 'hidden';
+       document.getElementById('op6').style.visibility = 'hidden';
+       document.getElementById('op7').style.visibility = 'hidden';
+       document.getElementById('op8').style.visibility = 'visible';
+       document.getElementById('op9').style.visibility = 'visible';
     
+}
 
 </script>
 {% block content1 %}
