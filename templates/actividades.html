@@ -18,8 +18,8 @@
                             <form class="user" action="/agregaractividad" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                        <select class="form-select" aria-label="Default select example" id="rol" name="materia">
-                                            <option value="seleccione" selected>Seleccione Seleccione Materia</option>
+                                        <select class="form-select" aria-label="Default select example" id="rol" name="materia" required>
+                                            <option value="" selected>Seleccione Seleccione Materia</option>
                                             {% for user in datosmatind %}
                                             <option value="{{user['id_materia']}}">{{user['nombre_materia']}}</option>
                                             {% endfor %}
@@ -28,7 +28,7 @@
 
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user mb-3" id="nombre1"
-                                            name="actividad" placeholder="Actividad">
+                                            name="actividad" placeholder="Actividad" required>
                                         <input id="docente" name="docente" type="hidden" value="{{ session['id_usuario'] }}">
 
                                     </div>
