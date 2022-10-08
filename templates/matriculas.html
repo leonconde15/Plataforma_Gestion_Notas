@@ -54,7 +54,17 @@
                                         onclick="vercancelar()">Cancelar</button>
                                 </div>
                             </form>
-
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <h4 class="alert-heading">Mensaje:</h4>
+                                <p class="mb-0"> {{ message }} </p>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
                         </div>
                     </div>
                 </div>
@@ -64,46 +74,5 @@
     </div>
 
 </div>
-
-</div>
-
-
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-1 my-1">
-                <div class="card-body p-0">
-                    <div class="p-3">
-                       
-                        <table id="usuarios2" class="table">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Docente</th>
-                                    <th>Materia</th>
-                                    <th>Estudiantes</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="listado"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-
-    window.onload = function () {
-        verdatos();
-    }
-</script>
-
 
 {% endblock %}
