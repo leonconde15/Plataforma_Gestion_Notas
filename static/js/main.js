@@ -56,12 +56,12 @@ function verusuarios(){
     
         function verpersonal(){
             var listapost;
-            identificador =document.getElementById("login_username").innerHTML;
+            identificador =document.getElementById("id_session").innerHTML;
     
             console.log(identificador)
             var url="/listadopersonal";
             var data = {
-                        "usuario":"leonconde15"                        
+                        "usuario": identificador                        
                 };
     
             fetch(url, {
@@ -80,8 +80,10 @@ function verusuarios(){
                 info=info+"<td>"+listapost[i]['id'] + "</td>"
                 info=info+"<td>"+listapost[i]['nombre'] + "</td>" 
                 info=info+"<td>"+listapost[i]['apellido'] + "</td>"
-                info=info+"<td>"+listapost[i]['usuario'] + "</td>"           
-                info=info+"<td> <span class='badge bg-success'>Editar</span> <span class='badge bg-danger'>Eliminar</span></td>"
+                info=info+"<td>"+listapost[i]['email'] + "</td>"
+                info=info+"<td>"+listapost[i]['usuario'] + "</td>"
+                info=info+"<td>"+listapost[i]['nacimiento'] + "</td>"         
+                
                 info=info+"</tr>"
             
             }

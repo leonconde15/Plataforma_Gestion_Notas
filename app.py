@@ -125,7 +125,7 @@ def lista_materias():
 	return jsonify(listado)
 
 # LISTAR PERSONAL
-@app.route('/listadopersonal', methods=['GET','POST'])
+@app.route('/listadopersonal', methods=['POST'])
 def lista_personal():
 	datos=request.get_json()
 	username=datos['usuario']

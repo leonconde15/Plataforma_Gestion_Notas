@@ -122,7 +122,9 @@ def listar_usuarios(username):
                 'id':u[0],
                 'nombre':u[1],
                 'apellido':u[2],
-                'usuario':u[4]
+                'email':u[3],
+                'usuario':u[4],
+                'nacimiento':u[7]
                 }
             usuarios.append(registro)    
 
