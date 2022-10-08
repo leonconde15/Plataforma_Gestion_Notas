@@ -165,12 +165,15 @@ def matriculas():
 
 @app.route('/calificaciones')
 def calificaciones():
-	return render_template('calificaciones.html')
+	username=session['usuario']
+	listadocalificaciones=controlador.lista_materiasindv(username)
+	return render_template('calificaciones.html',datosmatind=listadocalificaciones)
 
 @app.route('/actividades')
 def actividades():
-	listadomaterias=controlador.lista_materias()
-	return render_template('actividades.html',datosmateria=listadomaterias)
+	username=session['usuario']
+	listadocalificaciones=controlador.lista_materiasindv(username)
+	return render_template('actividades.html',datosmatind=listadocalificaciones)
 	
 
 @app.route('/personal')

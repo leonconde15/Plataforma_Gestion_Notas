@@ -108,6 +108,26 @@ def lista_materias():
            
     except:
         return False
+
+# Traer Materias individual por Docentes de la base de datos
+def lista_materiasindv(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM materia,usuarios,matricula WHERE usuarios.usuario=? AND usuarios.id_usuario=matricula.id_docente AND materia.id_materia=matricula.id_materia"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()
+        materia=[]
+        for mater in resultado:
+            regist={
+                    'id_materia':mater[0],
+                    'nombre_materia':mater[1]                                
+                 }
+            materia.append(regist)    
+        return materia
+           
+    except:
+        return False
 # Traer a los usuarios
 def listar_usuarios(username):
     try:

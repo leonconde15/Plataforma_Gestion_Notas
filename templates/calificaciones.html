@@ -21,16 +21,16 @@
                                                                            
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3"> 
                                         <select class="form-select" aria-label="Default select example" id="rol">
-                                            <option value="seleccione" selected>Seleccione</option>
-                                            <option value="Docente">Desarrollo de Sotfware</option>
-                                            <option value="Estudiante">Ingles</option>
-                                            <option value="Estudiante">Coaching</option>
+                                            <option value="seleccione" selected>Seleccione Materia</option>
+                                            {% for user in datosmatind %}
+                                            <option value="{{user['id_materia']}}">{{user['nombre_materia']}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     
                                         <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
                                             <select class="form-select mb-3" aria-label="Default select example" id="rol">
-                                                <option value="seleccione" selected>Seleccione</option>
+                                                <option value="seleccione" selected>Seleccione Estudiante</option>
                                                 <option value="Docente">Estudiante 1</option>
                                                 <option value="Estudiante">Estudiante 2</option>
                                                 <option value="Estudiante">Estudiante 3</option>
@@ -53,7 +53,7 @@
                                  
                                         <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
                                             <select class="form-select mb-3" aria-label="Default select example" id="rol">
-                                                <option value="seleccione" selected>Seleccione</option>
+                                                <option value="seleccione" selected>Seleccione Actividad</option>
                                                 <option value="Docente">Actividad 1</option>
                                                 <option value="Estudiante">Actividad 2</option>
                                                 <option value="Estudiante">Actividad 3</option>
@@ -99,46 +99,5 @@
     </div>
 
 </div>
-
-</div>
-
-
-</div>
-
-<div class="container">
-    <div class="row justify-content-center">
-
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-1 my-1">
-                <div class="card-body p-0">
-                    <div class="p-3">
-                       
-                        <table id="usuarios2" class="table">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Docente</th>
-                                    <th>Materia</th>
-                                    <th>Estudiantes</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="listado"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-
-    window.onload = function () {
-        verdatos();
-    }
-</script>
-
 
 {% endblock %}
