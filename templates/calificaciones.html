@@ -15,12 +15,12 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Gestion de Calificaciones</h1>
                             </div>
-                            <form class="user" action="/usuarios" method="POST">
+                            <form class="user" action="/agregarcalificacion" method="POST">
                                 
                                 <div class="form-group row">
                                                                            
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3"> 
-                                        <select class="form-select" aria-label="Default select example" id="rol">
+                                        <select class="form-select" aria-label="Default select example" id="materia" name="materia">
                                             <option value="seleccione" selected>Seleccione Materia</option>
                                             {% for user in datosmatind %}
                                             <option value="{{user['id_materia']}}">{{user['nombre_materia']}}</option>
@@ -29,20 +29,14 @@
                                     </div>
                                     
                                         <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                            <select class="form-select mb-3" aria-label="Default select example" id="rol">
+                                            <select class="form-select mb-3" aria-label="Default select example" id="estudiante" name="estudiante">
                                                 <option value="seleccione" selected>Seleccione Estudiante</option>
-                                                <option value="Docente">Estudiante 1</option>
-                                                <option value="Estudiante">Estudiante 2</option>
-                                                <option value="Estudiante">Estudiante 3</option>
-                                                <option value="Estudiante">Estudiante 4</option>
-                                                <option value="Docente">Estudiante 5</option>
-                                                <option value="Estudiante">Estudiante 6</option>
-                                                <option value="Estudiante">Estudiante 7</option>
-                                                <option value="Estudiante">Estudiante 8</option>
-                                                <option value="Estudiante">Estudiante 9</option>
-                                                <option value="Estudiante">Estudiante 10</option>
-                                                                                            
+                                                {% for user in datosestudiante %}
+                                                <option value="{{user['id_usuario']}}">{{user['nombre']}} {{user['apellido']}}</option>
+                                                {% endfor %}                                                                                           
                                             </select>
+                                            <input id="docente" name="docente" type="hidden" value="{{ session['id_usuario'] }}">
+
                                    
                                 </div>
                             </div>  
@@ -52,7 +46,7 @@
                                    
                                  
                                         <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                            <select class="form-select mb-3" aria-label="Default select example" id="rol">
+                                            <select class="form-select mb-3" aria-label="Default select example" id="actividad" name="actividad">
                                                 <option value="seleccione" selected>Seleccione Actividad</option>
                                                 {% for user in datosactvind %}
                                             <option value="{{user['id_actividad']}}">{{user['nombre_actividad']}}</option>
@@ -61,22 +55,21 @@
                                         </div>
 
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user mb-3" id="nombre1"
-                                                name="nombre1" placeholder="Calificacion">
+                                            <input type="text" class="form-control form-control-user mb-3" id="nota"
+                                                name="nota" placeholder="Calificacion">
                                         </div>
                            
                                                                    
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleTextarea" rows="2" placeholder="Retroalimentación"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea" name="retro" rows="2" placeholder="Retroalimentación"></textarea>
                                   </div>
                                
                                                         
 
                                 <div class="d-flex gap-2">
-                                    <button id="boton-accion" class="btn btn-primary" type="button"
-                                        onclick="verdatos();">Calificar</button>
+                                    <button id="boton-accion" class="btn btn-primary" type="submit">Calificar</button>
                                     <button class="btn btn-danger" type="button"
                                         onclick="vercancelar()">Cancelar</button>
                                 </div>

@@ -168,6 +168,28 @@ def lista_actividadindv(username):
     except:
         return False
 
+# Traer estudiantes individual por Docentes de la base de datos
+def lista_estudianteindv(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM usuarios WHERE id_usuario IN (SELECT matricula.id_estudiante FROM matricula,usuarios,materia WHERE usuarios.usuario=? AND usuarios.id_usuario=matricula.id_docente AND materia.id_materia=matricula.id_materia)"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()
+        estudiante=[]
+        for est in resultado:
+            regist={
+                    'id_usuario':est[0],
+                    'nombre':est[1],
+                    'apellido':est[2],
+
+                 }
+            estudiante.append(regist)    
+        return estudiante
+           
+    except:
+        return False
+
 
 # Traer a los usuarios
 def listar_usuarios(username):
@@ -312,6 +334,18 @@ def insertar_actividad(id_materia,id_docente,nombre_actividad):
         cursor=bd.cursor()
         sql="INSERT INTO actividad(id_materia,id_docente,nombre_actividad) VALUES(?,?,?)"
         cursor.execute(sql,[id_materia,id_docente,nombre_actividad])
+        bd.commit()
+        return True
+    except:
+        return False
+
+# Ingresar Calificacion
+def insertar_calificacion(id_materia,id_estudiante,id_docente,id_actividad,nota,retroalimentacion):
+    try:
+        bd=conectar_bd()
+        cursor=bd.cursor()
+        sql="INSERT INTO calificacion(id_materia,id_estudiante,id_docente,id_actividad,nota,retroalimentacion) VALUES(?,?,?,?,?,?)"
+        cursor.execute(sql,[id_materia,id_estudiante,id_docente,id_actividad,nota,retroalimentacion])
         bd.commit()
         return True
     except:

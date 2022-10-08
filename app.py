@@ -130,9 +130,12 @@ def agregar_actividad():
 def agregar_calificacion():
 	datos=request.form
 	id_materia=datos['materia']
+	id_estudiante=datos['estudiante']
 	id_docente=datos['docente']
-	nombre_actividad=datos['actividad']
-	resultado2=controlador.insertar_actividad(id_materia,id_docente,nombre_actividad)
+	id_actividad=datos['actividad']
+	nota=datos['nota']
+	retroalimentacion=datos['retro']
+	resultado2=controlador.insertar_calificacion(id_materia,id_estudiante,id_docente,id_actividad,nota,retroalimentacion)
 	if resultado2:
 		flash('Información Guardada')
 	else:
@@ -197,7 +200,8 @@ def calificaciones():
 	username=session['usuario']
 	listadocalificaciones=controlador.lista_materiasindv(username)
 	listadoactividad=controlador.lista_actividadindv(username)
-	return render_template('calificaciones.html',datosmatind=listadocalificaciones,datosactvind=listadoactividad)
+	listadoestudiante=controlador.lista_estudianteindv(username)
+	return render_template('calificaciones.html',datosmatind=listadocalificaciones,datosactvind=listadoactividad,datosestudiante=listadoestudiante)
 
 @app.route('/actividades')
 def actividades():
