@@ -173,7 +173,7 @@ def lista_estudianteindv(username):
     try:
         db=conectar_bd()
         cursor=db.cursor()
-        sql="SELECT * FROM usuarios WHERE id_usuario IN (SELECT matricula.id_estudiante FROM matricula,usuarios,materia WHERE usuarios.usuario=? AND usuarios.id_usuario=matricula.id_docente AND materia.id_materia=matricula.id_materia)"
+        sql="SELECT * FROM usuarios,matricula WHERE usuarios.id_usuario=matricula.id_estudiante AND matricula.id_docente=?"
         cursor.execute(sql,[username])
         resultado=cursor.fetchall()
         estudiante=[]
@@ -232,6 +232,28 @@ def listar_notas(username):
                 'nombre_actividad':u[5],
                 'nota':u[11],
                 'retroalimentacion':u[12]                
+                }
+            notas.append(registro)    
+
+                
+        return notas   
+    except:
+        return False
+# Traer estudiantes para cañificar
+def listar_estudiantescalif(username2):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM usuarios,materia,matricula WHERE materia.id_materia=matricula.id_materia AND usuarios.id_usuario=matricula.id_estudiante AND matricula.id_docente=?"
+        cursor.execute(sql,[username2])
+        resultado=cursor.fetchall()
+        notas=[]
+        for u in resultado:
+            registro = {
+                'id_usuario':u[0],
+                'nombre':u[1],
+                'apellido':u[2],
+                'nombre_materia':u[11]                               
                 }
             notas.append(registro)    
 

@@ -172,6 +172,15 @@ def lista_notas():
 	listado=controlador.listar_notas(username)
 	return jsonify(listado)
 
+#LISTAR ESTUDIANTES PARA CALIFICAR
+@app.route('/estcal', methods=['POST'])
+def lista_estcal():
+	
+	username2=session['id_usuario']
+	listado=controlador.listar_estudiantescalif(username2)
+	return jsonify(listado)
+
+
 
 
 #RUTAS DE NAVEGACION ##########
@@ -206,9 +215,10 @@ def matriculas():
 @app.route('/calificaciones')
 def calificaciones():
 	username=session['usuario']
+	username2=session['id_usuario']
 	listadocalificaciones=controlador.lista_materiasindv(username)
 	listadoactividad=controlador.lista_actividadindv(username)
-	listadoestudiante=controlador.lista_estudianteindv(username)
+	listadoestudiante=controlador.lista_estudianteindv(username2)
 	return render_template('calificaciones.html',datosmatind=listadocalificaciones,datosactvind=listadoactividad,datosestudiante=listadoestudiante)
 
 @app.route('/actividades')

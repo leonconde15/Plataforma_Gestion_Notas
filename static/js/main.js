@@ -141,6 +141,44 @@ function verusuarios(){
                 
                 }
 
+                function verestudiantesmatri(){
+                    var listapost;
+                    identificador =document.getElementById("id_session").innerHTML;
+            
+                    console.log(identificador)
+                    var url="/estcal";
+                    var data = {
+                                "id_usuario": identificador                        
+                        };
+            
+                    fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {"Content-type":"application/json;charset=UTF-8"}
+                        })
+                    .then(response=>response.json())
+                    .then((data)=>{
+                    listapost=data;    
+                    var info=""
+                    
+                    for(var i=0;i<listapost.length;i++)
+                    {
+                        info=info+"<tr class='table-warning'>"
+                        info=info+"<td>"+listapost[i]['nombre'] + "</td>" 
+                        info=info+"<td>"+listapost[i]['apellido'] + "</td>"
+                        info=info+"<td>"+listapost[i]['nombre_materia'] + "</td>"                               
+                        
+                        info=info+"</tr>"
+                    
+                    }
+                    
+                 
+                    document.getElementById("listado").innerHTML=info
+                    }
+                    )
+                    
+                    }
+
 function accion(){
     let boton = document.getElementById('boton-accion');
     
