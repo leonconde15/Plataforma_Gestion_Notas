@@ -15,10 +15,10 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Gestion de Actividades</h1>
                             </div>
-                            <form class="user" action="/usuarios" method="POST">
+                            <form class="user" action="/agregaractividad" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
-                                        <select class="form-select" aria-label="Default select example" id="rol">
+                                        <select class="form-select" aria-label="Default select example" id="rol" name="materia">
                                             <option value="seleccione" selected>Seleccione Seleccione Materia</option>
                                             {% for user in datosmatind %}
                                             <option value="{{user['id_materia']}}">{{user['nombre_materia']}}</option>
@@ -28,15 +28,16 @@
 
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user mb-3" id="nombre1"
-                                            name="nombre1" placeholder="Actividad">
+                                            name="actividad" placeholder="Actividad">
+                                        <input id="docente" name="docente" type="hidden" value="{{ session['id_usuario'] }}">
+
                                     </div>
                                                                       
                                 </div>
                                                                 
 
                                 <div class="d-flex gap-2">
-                                    <button id="boton-accion" class="btn btn-primary" type="button"
-                                        onclick="verdatos();">Crear Actividad</button>
+                                    <button id="boton-accion" class="btn btn-primary" type="submit" >Crear Actividad</button>
                                     <button class="btn btn-danger" type="button"
                                         onclick="vercancelar()">Cancelar</button>
                                 </div>

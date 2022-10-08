@@ -54,17 +54,9 @@
                                         <div class="col-sm-6 mb-3 mb-sm-0 mb-3">
                                             <select class="form-select mb-3" aria-label="Default select example" id="rol">
                                                 <option value="seleccione" selected>Seleccione Actividad</option>
-                                                <option value="Docente">Actividad 1</option>
-                                                <option value="Estudiante">Actividad 2</option>
-                                                <option value="Estudiante">Actividad 3</option>
-                                                <option value="Estudiante">Actividad 4</option>
-                                                <option value="Docente">Actividad 5</option>
-                                                <option value="Estudiante">Actividad 6</option>
-                                                <option value="Estudiante">Actividad 7</option>
-                                                <option value="Estudiante">Actividad 8</option>
-                                                <option value="Estudiante">Actividad 9</option>
-                                                <option value="Estudiante">Actividad 10</option>
-                                                                                            
+                                                {% for user in datosactvind %}
+                                            <option value="{{user['id_actividad']}}">{{user['nombre_actividad']}}</option>
+                                            {% endfor %}                                                                                            
                                             </select>
                                         </div>
 

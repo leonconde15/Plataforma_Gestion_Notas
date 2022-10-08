@@ -44,7 +44,9 @@ def val_user():
                     
                     listadouser=controlador.listar_usuarios(username)
                     listadorol=controlador.listar_roles(username)
+                    listadoidusuario=controlador.listar_id_usuario(username)
                     session['nombre_rol']=listadorol[0]['nombre_rol']
+                    session['id_usuario']=listadoidusuario[0]['id_usuario']
                     return render_template('menu.html',datauser=listadouser)					
                     
                 else:
@@ -103,12 +105,39 @@ def agregar_matricula():
 	id_docente=datos['docente']
 	id_estudiante=datos['estudiante']
 	resultado2=controlador.insertar_matricula(id_materia,id_docente,id_estudiante)
-	print(id_materia)
 	if resultado2:
 		flash('Información Guardada')
 	else:
 		flash('Error de Registro')
 	return redirect(url_for('matriculas'))
+
+#agregar actividad
+@app.route('/agregaractividad', methods=['POST'])
+def agregar_actividad():
+	datos=request.form
+	id_materia=datos['materia']
+	id_docente=datos['docente']
+	nombre_actividad=datos['actividad']
+	resultado2=controlador.insertar_actividad(id_materia,id_docente,nombre_actividad)
+	if resultado2:
+		flash('Información Guardada')
+	else:
+		flash('Error de Registro')
+	return redirect(url_for('actividades'))
+
+#agregar calificacion
+@app.route('/agregarcalificacion', methods=['POST'])
+def agregar_calificacion():
+	datos=request.form
+	id_materia=datos['materia']
+	id_docente=datos['docente']
+	nombre_actividad=datos['actividad']
+	resultado2=controlador.insertar_actividad(id_materia,id_docente,nombre_actividad)
+	if resultado2:
+		flash('Información Guardada')
+	else:
+		flash('Error de Registro')
+	return redirect(url_for('calificaciones'))
 
 
 
@@ -167,7 +196,8 @@ def matriculas():
 def calificaciones():
 	username=session['usuario']
 	listadocalificaciones=controlador.lista_materiasindv(username)
-	return render_template('calificaciones.html',datosmatind=listadocalificaciones)
+	listadoactividad=controlador.lista_actividadindv(username)
+	return render_template('calificaciones.html',datosmatind=listadocalificaciones,datosactvind=listadoactividad)
 
 @app.route('/actividades')
 def actividades():
