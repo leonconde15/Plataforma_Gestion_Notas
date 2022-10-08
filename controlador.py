@@ -216,6 +216,30 @@ def listar_usuarios(username):
     except:
         return False
 
+# Traer notas
+def listar_notas(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM materia,actividad,calificacion, usuarios WHERE usuario=? AND usuarios.id_usuario=calificacion.id_estudiante AND materia.id_materia=calificacion.id_materia AND actividad.id_actividad=calificacion.id_actividad"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()
+        notas=[]
+        for u in resultado:
+            registro = {
+                'id_materia':u[0],
+                'nombre_materia':u[1],
+                'nombre_actividad':u[5],
+                'nota':u[11],
+                'retroalimentacion':u[12]                
+                }
+            notas.append(registro)    
+
+                
+        return notas   
+    except:
+        return False
+
 # Traer los roles activos 
 def listar_roles(username):
     try:

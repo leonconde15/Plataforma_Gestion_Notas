@@ -94,6 +94,44 @@ function verusuarios(){
             )
             
             }
+            function vernotas(){
+                var listapost;
+                identificador =document.getElementById("id_session").innerHTML;
+        
+                console.log(identificador)
+                var url="/listanotas";
+                var data = {
+                            "usuario": identificador                        
+                    };
+        
+                fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {"Content-type":"application/json;charset=UTF-8"}
+                    })
+                .then(response=>response.json())
+                .then((data)=>{
+                listapost=data;    
+                var info=""
+                
+                for(var i=0;i<listapost.length;i++)
+                {
+                    info=info+"<tr'>"
+                    info=info+"<td>"+listapost[i]['nombre_materia'] + "</td>"
+                    info=info+"<td>"+listapost[i]['nombre_actividad'] + "</td>" 
+                    info=info+"<td>"+listapost[i]['nota'] + "</td>"
+                    info=info+"<td>"+listapost[i]['retroalimentacion'] + "</td>"          
+                    
+                    info=info+"</tr>"
+                
+                }
+                
+             
+                document.getElementById("listado").innerHTML=info
+                }
+                )
+                
+                }
 
 function accion(){
     let boton = document.getElementById('boton-accion');

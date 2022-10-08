@@ -164,6 +164,14 @@ def lista_personal():
 	listado=controlador.listar_usuarios(username)
 	return jsonify(listado)
 
+# LISTAR NOTAS
+@app.route('/listanotas', methods=['POST'])
+def lista_notas():
+	datos=request.get_json()
+	username=datos['usuario']
+	listado=controlador.listar_notas(username)
+	return jsonify(listado)
+
 
 
 #RUTAS DE NAVEGACION ##########

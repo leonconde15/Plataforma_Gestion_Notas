@@ -1,68 +1,59 @@
 {% extends 'menu.html' %}
+
 {% block content1 %}
-<div class="container">
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-2 my-1">
-                <div class="card-body p-0">
-                    <!-- Nested Row within Card Body -->
-                    <div class="row">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Notas de Asignaturas Matriculadas</h1>
-                            </div>
-    
-    <table class="table table-hover">
-        <!--tr son las filas-->
-        <tr class="table-dark">
-            <th colspan="3">Calculo 1</th>
-        </tr>
-        <tr class="table-primary">
-            <!--th son los encabezados -->
-            <th>Actividades</th>
-            <th>Nota</th>
-            <th>Observaciones</th>
-        </tr>
-        <tr class="table-secondary">
-            <!--td son las celdad/columnas de la fila-->
-            <td>Actividad 1</td>
-            <td>4.0</td>
-            <td>Muy bien</td>
-        </tr>
-        <tr class="table-secondary">
-            <!--td son las celdad/columnas de la fila-->
-            <td>Actividad 2</td>
-            <td>3.5</td>
-            <td>Falta mejorar</td>
-        </tr>
-        <tr class="table-secondary">
-            <!--td son las celdad/columnas de la fila-->
-            <td>Actividad 3</td>
-            <td>4.7</td>
-            <td>Excelente trabajo</td>
-        </tr>
-        <tr class="table-secondary">
-            <!--td son las celdad/columnas de la fila-->
-            <td>Actividad 4</td>
-            <td>4.2</td>
-            <td>Excelente</td>
-        </tr>
-        <tr class="table-secondary">
-            <!--td son las celdad/columnas de la fila-->
-            <td>Actividad 4</td>
-            <td>4.2</td>
-            <td>Excelente</td>
-        </tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
+          
+        <div class="container">
+            <!-- Outer Row -->
+            <div class="row justify-content-center">
+        
+                <div class="col-xl-10 col-lg-12 col-md-9">
+        
+                    <div class="card o-hidden border-2 my-1">
+                        <div class="card-body p-0">
+                            <!-- Nested Row within Card Body -->
+                            <div class="row">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">NOTAS GENERALES</h1>
+                                    </div>
+                                    <form class="user" action="listadopersonal" method="POST">    
+                                        <div class="d-flex gap-2">                        
+                                            
+                                        </div>
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                        
+                                                <div class="col-xl-10 col-lg-12 col-md-9">
+                                        
+                                                    <div class="card o-hidden border-1 my-1">
+                                                        <div class="card-body p-0">
+                                                            <div class="p-3">
+                                                               
+                                                                <table id="usuarios2" class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>MATERIA</th>
+                                                                            <th>ACTIVIDADES</th>
+                                                                            <th>NOTAS</th>
+                                                                            <th>OBSERVACIONES</th>                                                                            
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="listado"></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <script>
+                                        
+                                            window.onload = function () {
+                                                vernotas();
+                                            }
+                                        </script>
+                                        
+    </form>
+    </div>
 {% endblock %}
