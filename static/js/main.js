@@ -115,14 +115,22 @@ function verusuarios(){
                 var info=""
                 
                 for(var i=0;i<listapost.length;i++)
-                {
-                    info=info+"<tr class='table-warning'>"
-                    info=info+"<td>"+listapost[i]['nombre_materia'] + "</td>"
+                { 
+                    info=info+"<table class='table table-hover'>"
+                    info=info+"<tr class='table-dark'>"
+                    info=info+"<th colspan='3'>"+listapost[i]['nombre_materia'] +"</th>"
+                    info=info+"</tr>"
+                    info=info+"<tr class='table-primary'>"
+                    info=info+"<th>ACTIVIDADES</th>"
+                    info=info+"<th>NOTAS</th>"
+                    info=info+"<th>OBSERVACIONES</th>"
+                    info=info+"</tr>"
+                    info=info+"<tr class='table-Light'>"                    
                     info=info+"<td>"+listapost[i]['nombre_actividad'] + "</td>" 
                     info=info+"<td>"+listapost[i]['nota'] + "</td>"
-                    info=info+"<td>"+listapost[i]['retroalimentacion'] + "</td>"          
-                    
+                    info=info+"<td>"+listapost[i]['retroalimentacion'] + "</td>"                   
                     info=info+"</tr>"
+                    info=info+"</table>"
                 
                 }
                 
