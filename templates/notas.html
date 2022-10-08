@@ -2,7 +2,7 @@
 
 {% block content1 %}
           
-        <div class="container">
+        
             <!-- Outer Row -->
             <div class="row justify-content-center">
         
@@ -29,13 +29,14 @@
                                                         <div class="card-body p-0">
                                                             <div class="p-3">
                                                                
-                                                                <table id="usuarios2" class="table">
+                                                                <table id="usuarios2" class="table table-hover">
                                                                     <thead>
-                                                                        <tr>
+                                                                        <tr class="table-success">
                                                                             <th>MATERIA</th>
                                                                             <th>ACTIVIDADES</th>
                                                                             <th>NOTAS</th>
-                                                                            <th>OBSERVACIONES</th>                                                                            
+                                                                            <th>OBSERVACIONES</th>
+                                                                            
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody id="listado"></tbody>
@@ -53,7 +54,14 @@
                                                 vernotas();
                                             }
                                         </script>
-                                        
-    </form>
-    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+    
+    
 {% endblock %}
