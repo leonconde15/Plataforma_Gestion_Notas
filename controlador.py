@@ -128,6 +128,47 @@ def lista_materiasindv(username):
            
     except:
         return False
+
+# Traer actividad individual por Docentes de la base de datos
+def lista_actividadindv(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM actividad,usuarios WHERE usuarios.usuario=? AND usuarios.id_usuario=actividad.id_docente"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()
+        actividad=[]
+        for actv in resultado:
+            regist={
+                    'id_actividad':actv[0],
+                    'nombre_actividad':actv[3]                                
+                 }
+            actividad.append(regist)    
+        return actividad
+           
+    except:
+        return False
+# Traer actividad individual por Docentes de la base de datos
+def lista_actividadindv(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM actividad,usuarios WHERE usuarios.usuario=? AND usuarios.id_usuario=actividad.id_docente"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()
+        actividad=[]
+        for actv in resultado:
+            regist={
+                    'id_actividad':actv[0],
+                    'nombre_actividad':actv[3]                                
+                 }
+            actividad.append(regist)    
+        return actividad
+           
+    except:
+        return False
+
+
 # Traer a los usuarios
 def listar_usuarios(username):
     try:
@@ -174,6 +215,28 @@ def listar_roles(username):
            
     except:
         return False
+
+# Traer los id usuarios 
+def listar_id_usuario(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM usuarios WHERE usuario=?"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()
+        roles=[]
+        for u in resultado:
+            registro = {
+                'id_usuario':u[0]                                
+                }
+            roles.append(registro)    
+
+        print(roles)        
+        return roles
+           
+    except:
+        return False
+
 # Traer Docentes de la base de datos
 def lista_docentes():
     try:
@@ -241,3 +304,15 @@ def todos_usuarios():
              }
         usuarios.append(registro)
     return usuarios
+
+# Ingresar Actividad
+def insertar_actividad(id_materia,id_docente,nombre_actividad):
+    try:
+        bd=conectar_bd()
+        cursor=bd.cursor()
+        sql="INSERT INTO actividad(id_materia,id_docente,nombre_actividad) VALUES(?,?,?)"
+        cursor.execute(sql,[id_materia,id_docente,nombre_actividad])
+        bd.commit()
+        return True
+    except:
+        return False
