@@ -53,6 +53,73 @@ function verusuarios(){
         )
         
         }
+
+        function veractividad(){
+            var listapost;
+            identificador =document.getElementById("id_session").innerHTML;    
+            console.log(identificador)
+            var url="/listaactividad"
+            var data = {
+                "usuario": identificador                        
+        };            
+            fetch(url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {"Content-type":"application/json;charset=UTF-8"}
+                })
+            .then(response=>response.json())
+            .then((data)=>{
+            listapost=data;    
+            var info=""
+            
+            for(var i=0;i<listapost.length;i++)
+            {
+                info=info+"<tr'>"
+                info=info+"<td>"+listapost[i]['id_actividad'] + "</td>"
+                info=info+"<td>"+listapost[i]['nombre_actividad'] + "</td>"               
+                info=info+"</tr>"
+            
+            }
+            
+         
+            document.getElementById("listado").innerHTML=info
+            }
+            )
+            
+            }
+        
+            function verpromedio(){
+                var listapost;
+                identificador =document.getElementById("id_session").innerHTML;    
+                console.log(identificador)
+                var url="/listapromedio"
+                var data = {
+                    "usuario": identificador                        
+            };            
+                fetch(url, {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {"Content-type":"application/json;charset=UTF-8"}
+                    })
+                .then(response=>response.json())
+                .then((data)=>{
+                listapost=data;    
+                var info=""
+                
+                for(var i=0;i<listapost.length;i++)
+                {
+                    
+                    info=info+"<b>"+'El Promedio General es: '+data+ "</b>"                                  
+                    
+                
+                }
+                
+             
+                document.getElementById("listado2").innerHTML=info
+                }
+                )
+                
+                }    
     
         function verpersonal(){
             var listapost;
@@ -135,7 +202,7 @@ function verusuarios(){
                 }
                 
              
-                document.getElementById("listado").innerHTML=info
+                document.getElementById("listado1").innerHTML=info
                 }
                 )
                 

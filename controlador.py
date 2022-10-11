@@ -215,12 +215,22 @@ def listar_notas(username):
                 'nota':u[11],
                 'retroalimentacion':u[12]                
                 }
-            notas.append(registro)    
-
-                
+            notas.append(registro)                
         return notas   
     except:
         return False
+# Traer promedio General
+def listar_promedio(username):
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT AVG(calificacion.nota) FROM calificacion,usuarios,matricula WHERE usuarios.usuario=? AND usuarios.id_usuario=calificacion.id_estudiante"
+        cursor.execute(sql,[username])
+        resultado=cursor.fetchall()                      
+        return resultado   
+    except:
+        return False
+
 # Traer estudiantes para cañificar
 def listar_estudiantescalif(username2):
     try:

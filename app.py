@@ -164,6 +164,14 @@ def lista_personal():
 	listado=controlador.listar_usuarios(username)
 	return jsonify(listado)
 
+# LISTAR ACTIVIDAD INDIVIDUAL
+@app.route('/listaactividad', methods=['POST'])
+def lista_actividad():
+	datos=request.get_json()
+	username=datos['usuario']
+	listado=controlador.lista_actividadindv(username)
+	return jsonify(listado)
+
 # LISTAR NOTAS
 @app.route('/listanotas', methods=['POST'])
 def lista_notas():
@@ -171,6 +179,15 @@ def lista_notas():
 	username=datos['usuario']
 	listado=controlador.listar_notas(username)
 	return jsonify(listado)
+
+# LISTAR PROMEDIO GENERAL
+@app.route('/listapromedio', methods=['POST'])
+def lista_promedio():
+	datos=request.get_json()
+	username=datos['usuario']
+	listado=controlador.listar_promedio(username)
+	return jsonify(listado)
+	
 
 #LISTAR ESTUDIANTES PARA CALIFICAR
 @app.route('/estcal', methods=['POST'])
