@@ -1,6 +1,6 @@
 function verusuarios(){
     var listapost;
-    var url="http://localhost:5000/listadousuarios"
+    var url="/listadousuarios"
     
     fetch(url)
     .then(response=>response.json())
@@ -29,7 +29,7 @@ function verusuarios(){
     
     function vermaterias(){
         var listapost;
-        var url="http://localhost:5000/listadomaterias"
+        var url="/listadomaterias"
         
         fetch(url)
         .then(response=>response.json())

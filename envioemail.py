@@ -8,8 +8,8 @@ def enviar_email(email_destino,codigo):
     email = EmailMessage()
     email["From"] = remitente
     email["To"] = destinatario
-    email["Subject"] = "Codigo de Activacion " + codigo
-    email.set_content(mensaje)
+    email["Subject"] = "Codigo de Activacion "+ codigo
+    email.set_content(mensaje, subtype="html")
     smtp = smtplib.SMTP("smtp-mail.outlook.com", port=587)
     smtp.starttls()
     smtp.login(remitente, "amor1516")

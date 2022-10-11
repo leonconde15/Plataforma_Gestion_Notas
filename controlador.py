@@ -9,7 +9,7 @@ def conectar_bd():
     conexion=sqlite3.connect(DB_NAME)
     return conexion
 #Ingresar Usuarios    
-def insertar_usuarios(nom,ape,email,usuario,rol,contra,nac):
+def insertar_usuarios(nom,ape,correo,usuario,rol,contra,nac):
     cod_ver=str(datetime.now())
     cod_ver=cod_ver.replace("-","")
     cod_ver=cod_ver.replace(" ","")
@@ -20,9 +20,9 @@ def insertar_usuarios(nom,ape,email,usuario,rol,contra,nac):
         bd=conectar_bd()
         cursor=bd.cursor()
         sql="INSERT INTO usuarios(nombre,apellido,email,usuario,rol,contrasena,nacimiento,cod_verificacion,verificado) VALUES(?,?,?,?,?,?,?,?,?)"
-        cursor.execute(sql,[nom,ape,email,usuario,rol,contra,nac,cod_ver,0])
+        cursor.execute(sql,[nom,ape,correo,usuario,rol,contra,nac,cod_ver,0])        
         bd.commit()
-        envioemail.enviar_email(email,cod_ver)
+        envioemail.enviar_email(correo,cod_ver)          
         return True
     except:
         return False
