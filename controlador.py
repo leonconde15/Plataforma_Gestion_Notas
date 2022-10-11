@@ -148,25 +148,7 @@ def lista_actividadindv(username):
            
     except:
         return False
-# Traer actividad individual por Docentes de la base de datos
-def lista_actividadindv(username):
-    try:
-        db=conectar_bd()
-        cursor=db.cursor()
-        sql="SELECT * FROM actividad,usuarios WHERE usuarios.usuario=? AND usuarios.id_usuario=actividad.id_docente"
-        cursor.execute(sql,[username])
-        resultado=cursor.fetchall()
-        actividad=[]
-        for actv in resultado:
-            regist={
-                    'id_actividad':actv[0],
-                    'nombre_actividad':actv[3]                                
-                 }
-            actividad.append(regist)    
-        return actividad
-           
-    except:
-        return False
+
 
 # Traer estudiantes individual por Docentes de la base de datos
 def lista_estudianteindv(username):
