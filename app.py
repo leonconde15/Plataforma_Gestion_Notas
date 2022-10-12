@@ -197,7 +197,11 @@ def lista_estcal():
 	listado=controlador.listar_estudiantescalif(username2)
 	return jsonify(listado)
 
-
+# LISTAR USUARIOS
+@app.route('/listadomatriculados', methods=['GET','POST'])
+def lista_matriculados():
+	listado=controlador.lista_matriculados()
+	return jsonify(listado)
 
 
 #RUTAS DE NAVEGACION ##########

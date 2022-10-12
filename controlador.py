@@ -189,7 +189,8 @@ def listar_usuarios(username):
                 'apellido':u[2],
                 'email':u[3],
                 'usuario':u[4],
-                'nacimiento':u[7]
+                'rol':u[5],
+                'nacimiento':u[7]                
                 }
             usuarios.append(registro)    
 
@@ -344,7 +345,7 @@ def todos_usuarios():
     try:
         db=conectar_bd()
         cursor=db.cursor()
-        sql="SELECT * FROM usuarios"
+        sql="SELECT * FROM usuarios,roles WHERE usuarios.rol=roles.id_rol"
         cursor.execute(sql)
         resultado=cursor.fetchall()
         
@@ -354,7 +355,8 @@ def todos_usuarios():
                 'nombre':u[1],
                 'apellido':u[2],
                 'email':u[3],
-                'usuario':u[4]
+                'usuario':u[4],
+                'nombre_rol':u[11]
                 }
             usuarios.append(registro)                
         return usuarios   
@@ -386,5 +388,26 @@ def insertar_calificacion(id_materia,id_estudiante,id_docente,id_actividad,nota,
         cursor.execute(sql,[id_materia,id_estudiante,id_docente,id_actividad,nota,retroalimentacion])
         bd.commit()
         return True
+    except:
+        return False
+
+#kistar  Matriculados
+def lista_matriculados():
+    try:
+        db=conectar_bd()
+        cursor=db.cursor()
+        sql="SELECT * FROM materia,roles,usuarios,matricula WHERE materia.id_materia=matricula.id_materia AND (usuarios.id_usuario=matricula.id_docente OR usuarios.id_usuario=matricula.id_estudiante) AND usuarios.rol=roles.id_rol"
+        cursor.execute(sql)
+        resultado=cursor.fetchall()
+        docente=[]
+        for doc in resultado:
+            regist={
+                    'nombre_materia':doc[1],
+                    'nombre_rol':doc[3],
+                    'nombre':doc[5],
+                    'apellido':doc[6]                                
+                 }
+            docente.append(regist)    
+        return docente
     except:
         return False

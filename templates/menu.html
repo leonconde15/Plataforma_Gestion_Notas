@@ -56,7 +56,9 @@
                         <a onclick="" href="{{url_for('matriculas')}}" class="boton" ><i class="bi bi-pencil-square"></i>Gestion
                                         de Matriculas</a>     
                     </div>
-                  
+                    <div class="d-grid gap-2">
+                        <a href="{{url_for('login')}}" class="boton seleccionado"><i class="bi-escape"></i>Cerrar Sesión</a>       
+                    </div>
                 
                 </div>
               </div>
@@ -76,6 +78,9 @@
                        <a onclick="" href="{{url_for('calificaciones')}}" class="boton" ><i class="bi bi-grid-3x3"></i>Gestion
                                 de Calificaciones</a>            
                     </div>
+                    <div class="d-grid gap-2">
+                        <a href="{{url_for('login')}}" class="boton seleccionado"><i class="bi-escape"></i>Cerrar Sesión</a>       
+                    </div>
                   
                 </div>
               </div>
@@ -91,7 +96,9 @@
                     <div class="d-grid gap-2">
                         <a href="{{url_for('personal')}}" class="boton seleccionado" ><i class="bi bi-person-circle"></i>Información Estudiante</a>
                         <a href="{{url_for('notas')}}" class="boton" ><i class="bi-search"></i>Consulta</a>
-                        
+                        <div class="d-grid gap-2">
+                            <a href="{{url_for('login')}}" class="boton seleccionado"><i class="bi-escape"></i>Cerrar Sesión</a>       
+                        </div>
                     </div>
                 </div>
               </div>
@@ -99,10 +106,7 @@
           </div>
           <p></p>
           <p></p>
-        <div class="d-grid gap-2">
-            <a href="{{url_for('login')}}" class="boton seleccionado"><i class="bi-escape"></i>Salir</a>
         
-        </div>
 
 
     </div>

@@ -15,6 +15,7 @@ function verusuarios(){
         info=info+"<td>"+listapost[i]['nombre'] + "</td>"
         info=info+"<td>"+listapost[i]['apellido'] + "</td>"
         info=info+"<td>"+listapost[i]['email'] + "</td>"
+        info=info+"<td>"+listapost[i]['nombre_rol']+ "</td>"
         info=info+"<td> <span class='badge bg-success'>Editar</span> <span class='badge bg-danger'>Eliminar</span></td>"
         info=info+"</tr>"
     
@@ -53,6 +54,35 @@ function verusuarios(){
         )
         
         }
+
+        function vermatriculados(){
+            var listapost;
+            var url="/listadomatriculados"
+            
+            fetch(url)
+            .then(response=>response.json())
+            .then((data)=>{
+            listapost=data;    
+            var info=""
+            
+            for(var i=0;i<listapost.length;i++)
+            {
+                info=info+"<tr'>"
+                info=info+"<td>"+listapost[i]['nombre_materia'] + "</td>"
+                info=info+"<td>"+listapost[i]['nombre_rol'] + "</td>"
+                info=info+"<td>"+listapost[i]['nombre'] + "</td>" 
+                info=info+"<td>"+listapost[i]['apellido'] + "</td>"           
+                info=info+"<td><span class='badge bg-danger'>Eliminar</span></td>"
+                info=info+"</tr>"
+            
+            }
+            
+         
+            document.getElementById("listado").innerHTML=info
+            }
+            )
+            
+            }
 
         function veractividad(){
             var listapost;
